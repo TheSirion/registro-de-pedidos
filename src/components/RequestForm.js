@@ -36,7 +36,7 @@ const RequestForm = () => {
             <Form.Label>Data</Form.Label>
             <Form.Control onClick={setRequestDate} />
           </Col>
-          <Col className="d-flex justify-end align-end">
+          <Col className="d-flex justify-start align-end">
             <Button variant="primary">OK</Button>
           </Col>
         </Row>

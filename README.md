@@ -1,3 +1,5 @@
-# react-f1eo2v
+# Registro de pedidos
+## O que é?
+É um web app que tem o propósito de 
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/react-f1eo2v)
+react-f1eo2v
