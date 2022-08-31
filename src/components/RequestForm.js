@@ -3,29 +3,26 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Modal from 'react-bootstrap/Modal';
-import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import pt from 'date-fns/locale/pt';
 registerLocale('pt', pt);
 
+const sectorSelect = [
+  {name: "SSI / 3º"},
+  {name: "SPE / 4º"},
+  {name: "PNAD-C / 5º"},
+  {name: "IPC / 7º"},
+  {name: "REGISTRO CIVIL / 7º"},
+  {name: "COORD CENSO / 8º"},
+  {name: "SRH / 9º"},
+  {name: "SRH / 10º"},
+  {name: "GOF / 11º"},
+  {name: "GAB / 13º"}
+];
+
 const RequestForm = () => {
   const [startDate, setStartDate] = useState(new Date());
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => {
-    setShow(!show);
-  };
-
-  const setRequestDate = () => {
-    return (
-      <DatePicker
-        todayButton="Hoje"
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-      />
-    );
-  };
 
   return (
     <Form>
@@ -37,7 +34,10 @@ const RequestForm = () => {
           </Col>
           <Col sm={4}>
             <Form.Label>Setor ou agência</Form.Label>
-            <Form.Control />
+            <Form.Select>
+              <option value="">SELECIONE</option>
+              {sectorSelect.map(sector => <option value={sector.name}>{sector.name}</option>)}
+            </Form.Select>
           </Col>
         </Row>
         <Row>
