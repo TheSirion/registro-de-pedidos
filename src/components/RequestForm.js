@@ -3,10 +3,19 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import DatePicker from 'react-datepicker';
+import Modal from 'react-bootstrap/Modal';
+import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import pt from 'date-fns/locale/pt';
+registerLocale('pt', pt);
 
 const RequestForm = () => {
   const [startDate, setStartDate] = useState(new Date());
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(!show);
+  };
 
   const setRequestDate = () => {
     return (
@@ -34,10 +43,16 @@ const RequestForm = () => {
         <Row>
           <Col sm={4}>
             <Form.Label>Data</Form.Label>
-            <Form.Control onClick={setRequestDate} />
+            <DatePicker
+              className="form-control"
+              todayButton="Hoje"
+              selected={startDate}
+              locale="pt"
+              onChange={(date) => setStartDate(date)}
+            />
           </Col>
-          <Col className="d-flex justify-start align-end">
-            <Button variant="primary">OK</Button>
+          <Col className="d-flex justify-content-start align-items-end">
+            <Button variant="primary">SALVAR</Button>
           </Col>
         </Row>
       </Form.Group>
