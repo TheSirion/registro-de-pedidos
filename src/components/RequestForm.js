@@ -1,24 +1,39 @@
-import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import DatePicker, { registerLocale } from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import pt from 'date-fns/locale/pt';
-registerLocale('pt', pt);
+import pt from "date-fns/locale/pt";
+import React, { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import DatePicker, { registerLocale } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+registerLocale("pt", pt);
 
 const sectorSelect = [
-  {name: "SSI / 3º"},
-  {name: "SPE / 4º"},
-  {name: "PNAD-C / 5º"},
-  {name: "IPC / 7º"},
-  {name: "REGISTRO CIVIL / 7º"},
-  {name: "COORD CENSO / 8º"},
-  {name: "SRH / 9º"},
-  {name: "SRH / 10º"},
-  {name: "GOF / 11º"},
-  {name: "GAB / 13º"}
+  { name: "SSI / 3º" },
+  { name: "SPE / 4º" },
+  { name: "PNAD-C / 5º" },
+  { name: "IPC / 7º" },
+  { name: "REGISTRO CIVIL / 7º" },
+  { name: "COORD CENSO / 8º" },
+  { name: "SRH / 9º" },
+  { name: "ACG" },
+  { name: "AJA" },
+  { name: "AMA" },
+  { name: "AME" },
+  { name: "ABP" },
+  { name: "ACF" },
+  { name: "ACP" },
+  { name: "ADC" },
+  { name: "AIB" },
+  { name: "AIT" },
+  { name: "AMC" },
+  { name: "ANT" },
+  { name: "ANF" },
+  { name: "ANI" },
+  { name: "APT" },
+  { name: "ARE" },
+  { name: "ASG" },
+  { name: "AVR" },
 ];
 
 const RequestForm = () => {
@@ -26,7 +41,7 @@ const RequestForm = () => {
 
   return (
     <Form>
-      <Form.Group className="mb-3">
+      <Form.Group className='mb-3'>
         <Row>
           <Col sm={8}>
             <Form.Label>Requisitante</Form.Label>
@@ -35,8 +50,10 @@ const RequestForm = () => {
           <Col sm={4}>
             <Form.Label>Setor ou agência</Form.Label>
             <Form.Select>
-              <option value="">SELECIONE</option>
-              {sectorSelect.map(sector => <option value={sector.name}>{sector.name}</option>)}
+              <option value=''>SELECIONE</option>
+              {sectorSelect.map(sector => (
+                <option value={sector.name}>{sector.name}</option>
+              ))}
             </Form.Select>
           </Col>
         </Row>
@@ -44,15 +61,15 @@ const RequestForm = () => {
           <Col sm={4}>
             <Form.Label>Data</Form.Label>
             <DatePicker
-              className="form-control"
-              todayButton="Hoje"
+              className='form-control'
+              todayButton='Hoje'
               selected={startDate}
-              locale="pt"
-              onChange={(date) => setStartDate(date)}
+              locale='pt'
+              onChange={date => setStartDate(date)}
             />
           </Col>
-          <Col className="d-flex justify-content-start align-items-end">
-            <Button variant="primary">SALVAR</Button>
+          <Col className='d-flex justify-content-start align-items-end'>
+            <Button variant='primary'>SALVAR</Button>
           </Col>
         </Row>
       </Form.Group>
