@@ -17,7 +17,6 @@ const ItemsList = props => {
 
   return (
     <>
-      <h2>Lista de itens</h2>
       <Table>
         <thead>
           <tr>

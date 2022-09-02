@@ -68,8 +68,16 @@ const RequestForm = () => {
               onChange={date => setStartDate(date)}
             />
           </Col>
-          <Col className='d-flex justify-content-start align-items-end'>
-            <Button variant='primary'>SALVAR</Button>
+        </Row>
+        <Row>
+          <Col>
+          <Form.Label>Item</Form.Label>
+          <Form.Control />
+          </Col>
+        </Row>
+        <Row className='d-flex justify-content-start align-items-end'>
+          <Col>
+          <Button variant='primary'>SALVAR</Button>
           </Col>
         </Row>
       </Form.Group>

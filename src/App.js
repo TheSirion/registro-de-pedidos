@@ -9,7 +9,7 @@ import "./style.css";
 const itemsList = [
   { name: "papel A4", quantity: 3 },
   { name: "envelope grande", quantity: 4 },
-  { name: "chocolatinho maneiro", quantity: 1 },
+  { name: "chocolatinho maneiro", quantity: 0 },
 ];
 
 export default function App() {
