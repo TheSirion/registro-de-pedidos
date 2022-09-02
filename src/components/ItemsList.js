@@ -8,9 +8,8 @@ const ItemsList = props => {
   const listItems = () => {
     if (items) {
       return items.map(item => {
-        console.log(item)
         const {name, quantity} = item;
-        return <Item name={name} quantity={quantity} />
+        return <Item key={name} name={name} quantity={quantity} />
       }
       );
     }

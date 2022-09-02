@@ -36,8 +36,8 @@ const sectorSelect = [
   { name: "AVR" },
 ];
 
-const RequestForm = () => {
-  const [startDate, setStartDate] = useState(new Date());
+const RequestForm = (props) => {
+  const {eventHandlers: {handleDateChange, handleNameChange, handleSectorChange, handleItemChange}, date} = props;
 
   return (
     <Form>
@@ -45,11 +45,11 @@ const RequestForm = () => {
         <Row>
           <Col sm={8}>
             <Form.Label>Requisitante</Form.Label>
-            <Form.Control />
+            <Form.Control onChange={handleNameChange} />
           </Col>
           <Col sm={4}>
             <Form.Label>Setor ou agência</Form.Label>
-            <Form.Select>
+            <Form.Select onChange={handleSectorChange}>
               <option value='' key="">SELECIONE</option>
               {sectorSelect.map(sector => (
                 <option key={sector.name} value={sector.name}>{sector.name}</option>
@@ -63,17 +63,17 @@ const RequestForm = () => {
             <DatePicker
               className='form-control'
               todayButton='Hoje'
-              selected={startDate}
               locale={pt}
               dateFormat="dd/MM/yyyy"
-              onChange={date => setStartDate(date)}
+              selected={date}
+              onChange={handleDateChange}
             />
           </Col>
         </Row>
         <Row className="d-flex align-items-end">
           <Col sm={6}>
             <Form.Label>Item</Form.Label>
-            <Form.Control />
+            <Form.Control onChange={handleItemChange} />
           </Col>
           <Col sm={2}>
             <Form.Label>Quantidade</Form.Label>
