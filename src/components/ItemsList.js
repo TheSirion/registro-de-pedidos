@@ -1,17 +1,18 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
+import Item from "./Item.js"
 
 const ItemsList = props => {
   const { items } = props;
 
   const listItems = () => {
     if (items) {
-      return items.map(item => (
-        <tr key={item.name}>
-          <td>{`${item.name}`}</td>
-          <td>{`${item.quantity}`}</td>
-        </tr>
-      ));
+      return items.map(item => {
+        console.log(item)
+        const {name, quantity} = item;
+        return <Item name={name} quantity={quantity} />
+      }
+      );
     }
   };
 

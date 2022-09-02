@@ -75,7 +75,7 @@ const RequestForm = () => {
             <Form.Label>Item</Form.Label>
             <Form.Control />
           </Col>
-          <Col sm={1}>
+          <Col sm={2}>
             <Form.Label>Quantidade</Form.Label>
             <Form.Control />
           </Col>
