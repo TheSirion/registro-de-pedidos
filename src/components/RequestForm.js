@@ -70,10 +70,17 @@ const RequestForm = () => {
             />
           </Col>
         </Row>
-        <Row>
-          <Col>
+        <Row className="d-flex align-items-end">
+          <Col sm={6}>
             <Form.Label>Item</Form.Label>
             <Form.Control />
+          </Col>
+          <Col sm={1}>
+            <Form.Label>Quantidade</Form.Label>
+            <Form.Control />
+          </Col>
+          <Col sm={3}>
+            <Button>ADICIONAR</Button>
           </Col>
         </Row>
       </Form.Group>
