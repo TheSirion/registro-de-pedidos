@@ -1,20 +1,32 @@
-import React from 'react';
-import ListGroup from 'react-bootstrap/ListGroup';
+import React from "react";
+import Table from "react-bootstrap/Table";
 
-const ItemsList = (props) => {
+const ItemsList = props => {
   const { items } = props;
 
   const listItems = () => {
     if (items) {
-      console.log(items)
-      return items.map((item) => <ListGroup.Item key={item.name}>{`${item.name}: ${item.quantity}`}</ListGroup.Item>);
+      return items.map(item => (
+        <tr key={item.name}>
+          <th>{`${item.name}`}</th>
+          <th>{`${item.quantity}`}</th>
+        </tr>
+      ));
     }
   };
 
   return (
     <>
       <h2>Lista de itens</h2>
-      <ListGroup>{listItems()}</ListGroup>
+      <Table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantidade</th>
+          </tr>
+        </thead>
+        <tbody>{listItems()}</tbody>
+      </Table>
     </>
   );
 };
