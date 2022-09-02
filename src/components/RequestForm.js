@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import DatePicker, { registerLocale } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-registerLocale("pt", pt);
+registerLocale("pt-BR", pt);
 
 const sectorSelect = [
   { name: "SSI / 3º" },
@@ -50,9 +50,9 @@ const RequestForm = () => {
           <Col sm={4}>
             <Form.Label>Setor ou agência</Form.Label>
             <Form.Select>
-              <option value=''>SELECIONE</option>
+              <option value='' key="">SELECIONE</option>
               {sectorSelect.map(sector => (
-                <option value={sector.name}>{sector.name}</option>
+                <option key={sector.name} value={sector.name}>{sector.name}</option>
               ))}
             </Form.Select>
           </Col>
@@ -64,20 +64,16 @@ const RequestForm = () => {
               className='form-control'
               todayButton='Hoje'
               selected={startDate}
-              locale='pt'
+              locale={pt}
+              dateFormat="dd/MM/yyyy"
               onChange={date => setStartDate(date)}
             />
           </Col>
         </Row>
         <Row>
           <Col>
-          <Form.Label>Item</Form.Label>
-          <Form.Control />
-          </Col>
-        </Row>
-        <Row className='d-flex justify-content-start align-items-end'>
-          <Col>
-          <Button variant='primary'>SALVAR</Button>
+            <Form.Label>Item</Form.Label>
+            <Form.Control />
           </Col>
         </Row>
       </Form.Group>
