@@ -8,8 +8,8 @@ const ItemsList = props => {
     if (items) {
       return items.map(item => (
         <tr key={item.name}>
-          <th>{`${item.name}`}</th>
-          <th>{`${item.quantity}`}</th>
+          <td>{`${item.name}`}</td>
+          <td>{`${item.quantity}`}</td>
         </tr>
       ));
     }
