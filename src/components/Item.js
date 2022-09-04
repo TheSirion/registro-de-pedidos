@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-const Item = (props) => {
-  const {name, quantity} = props;
+const Item = props => {
+  const { name, amount } = props;
   return (
     <tr key={name}>
       <td>{`${name}`}</td>
-      <td>{`${quantity}`}</td>
+      <td>{`${amount}`}</td>
     </tr>
-  )
-}
+  );
+};
 
 export default Item;

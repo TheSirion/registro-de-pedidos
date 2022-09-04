@@ -16,6 +16,8 @@ const sectorSelect = [
   { name: "REGISTRO CIVIL / 7º" },
   { name: "COORD CENSO / 8º" },
   { name: "SRH / 9º" },
+  { name: "GRM / 12º" },
+  { name: "GAB / 13º" },
   { name: "ACG" },
   { name: "AJA" },
   { name: "AMA" },
@@ -36,23 +38,50 @@ const sectorSelect = [
   { name: "AVR" },
 ];
 
-const RequestForm = (props) => {
-  const {eventHandlers: {handleDateChange, handleNameChange, handleSectorChange, handleItemChange}, date} = props;
+const RequestForm = props => {
+  const [validated, setValidated] = useState(false);
+
+  const {
+    eventHandlers: {
+      setDate,
+      handleNameChange,
+      handleSectorChange,
+      handleItemChange,
+      handleItemAmountChange,
+    },
+    date,
+    addItem,
+  } = props;
+
+  // const showAlert = signal => {
+  //   if (signal === true) {
+  //     return <Alert>Item adicionado com sucesso.</Alert>
+  //   }
+
+  //   if (signal === false) {
+  //     return <Alert></Alert>
+  //   }
+  // };
 
   return (
-    <Form>
+    <Form noValidate validated={validated}>
       <Form.Group className='mb-3'>
         <Row>
           <Col sm={8}>
             <Form.Label>Requisitante</Form.Label>
             <Form.Control onChange={handleNameChange} />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Col>
           <Col sm={4}>
             <Form.Label>Setor ou agência</Form.Label>
             <Form.Select onChange={handleSectorChange}>
-              <option value='' key="">SELECIONE</option>
+              <option value='' key=''>
+                SELECIONE
+              </option>
               {sectorSelect.map(sector => (
-                <option key={sector.name} value={sector.name}>{sector.name}</option>
+                <option key={sector.name} value={sector.name}>
+                  {sector.name}
+                </option>
               ))}
             </Form.Select>
           </Col>
@@ -64,23 +93,23 @@ const RequestForm = (props) => {
               className='form-control'
               todayButton='Hoje'
               locale={pt}
-              dateFormat="dd/MM/yyyy"
+              dateFormat='dd/MM/yyyy'
               selected={date}
-              onChange={handleDateChange}
+              onChange={date => setDate(date)}
             />
           </Col>
         </Row>
-        <Row className="d-flex align-items-end">
+        <Row className='d-flex align-items-end'>
           <Col sm={6}>
             <Form.Label>Item</Form.Label>
             <Form.Control onChange={handleItemChange} />
           </Col>
           <Col sm={2}>
             <Form.Label>Quantidade</Form.Label>
-            <Form.Control />
+            <Form.Control onChange={handleItemAmountChange} />
           </Col>
           <Col sm={3}>
-            <Button>ADICIONAR</Button>
+            <Button onClick={addItem}>ADICIONAR</Button>
           </Col>
         </Row>
       </Form.Group>
