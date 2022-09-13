@@ -11,89 +11,73 @@ import "./style.css";
 
 export default function App() {
   const [request, setRequest] = useState({});
-  const [name, setName] = useState("");
-  const [sector, setSector] = useState("");
-  const [date, setDate] = useState(new Date());
+  // const [name, setName] = useState("");
+  // const [sector, setSector] = useState("");
+  // const [date, setDate] = useState(new Date());
   const [item, setItem] = useState("");
   const [itemAmount, setItemAmount] = useState(0);
   const [itemList, setItemList] = useState([]);
 
-  const handleNameChange = event => {
-    event.preventDefault();
-    setName(event.target.value);
-  };
+  // const handleNameChange = event => {
+  //   event.preventDefault();
+  //   setName(event.target.value);
+  // };
 
-  const handleSectorChange = event => {
-    event.preventDefault();
-    setSector(event.target.value);
-  };
+  // const handleSectorChange = event => {
+  //   event.preventDefault();
+  //   setSector(event.target.value);
+  // };
 
-  const handleItemChange = event => {
-    event.preventDefault();
-    setItem(event.target.value);
-  };
+  // const handleItemChange = event => {
+  //   event.preventDefault();
+  //   setItem(event.target.value);
+  // };
 
-  const handleItemAmountChange = event => {
-    event.preventDefault();
-    setItemAmount(event.target.value);
-  };
+  // const handleItemAmountChange = event => {
+  //   event.preventDefault();
+  //   setItemAmount(event.target.value);
+  // };
 
   const addItem = () => {
     const newItem = {
       name: item,
-      amount: itemAmount,
+      amount: itemAmount
     };
 
-    for (let item in itemList) {
-      if (item.name === newItem.name) {
-        return;
-      }
-    }
-
-    if (newItem.name === "") {
-      return;
-    } else if (newItem.amount === 0) {
-      return;
-    } else {
-      const addToList = itemList.concat(newItem);
-      setItemList(addToList);
-      setItem("");
-      setItemAmount(0);
-    }
+    const addToList = itemList.concat(newItem);
+    setItemList(addToList);
+    setItem("");
+    setItemAmount(0);
   };
 
   const makeRequest = () => {
-    const newRequest = {
-      name: name,
-      sector: sector,
-      date: date,
-      itemList: itemList,
-    };
-    setRequest(newRequest);
+    // const newRequest = {
+    //   name: name,
+    //   sector: sector,
+    //   date: date,
+    //   itemList: itemList
+    // };
+    setRequest(request);
   };
 
-  const saveRequest = () => {
-    makeRequest();
+  const saveRequest = async () => {
+    await makeRequest();
     console.log(request);
   };
 
-  const eventHandlers = {
-    handleNameChange,
-    handleSectorChange,
-    handleItemChange,
-    handleItemAmountChange,
-    setDate,
-  };
+  // const eventHandlers = {
+  //   handleNameChange,
+  //   handleSectorChange,
+  //   handleItemChange,
+  //   handleItemAmountChange,
+  //   setDate
+  // };
 
   return (
     <>
       <Header />
       <Container>
-        <RequestForm
-          eventHandlers={eventHandlers}
-          date={date}
-          addItem={addItem}
-        />
+        <RequestForm addItem={addItem} setRequest={setRequest} />
         <ItemsList items={itemList} />
         <Row className='d-flex justify-content-start align-items-end'>
           <Col>
